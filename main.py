@@ -1,6 +1,7 @@
 from tkinter import *
 import customtkinter as ctk 
 import requests
+import sys
 
 app = ctk.CTk()
 app.title("Scrap")
@@ -18,26 +19,51 @@ def url():
 
 def html_save():
     f_name = file_name.get()
-    if f_name.replace(' ','') == '':
-        status_label.configure(text='Set file name..!', text_color='red')        
+    
+    if(sys.platform == 'win32'):
+        if f_name.replace(' ','') == '':
+            status_label.configure(text='Set file name..!', text_color='red')        
+        else:
+            html = html_output_box.get(0.0,'end')
+            with open(f'downloads\\{f_name}.html', 'w') as f1:
+                f1.write(html)
+            f1.close()
+            status_label.configure(text='Saved..!',text_color='green')
+
+    
     else:
-        html = html_output_box.get(0.0,'end')
-        with open(f'/home/nishanth/Downloads/{f_name}.html', 'w') as f1:
-            f1.write(html)
-        f1.close()
-        status_label.configure(text='Saved..!',text_color='green')
+        if f_name.replace(' ','') == '':
+            status_label.configure(text='Set file name..!', text_color='red')        
+        else:
+            html = html_output_box.get(0.0,'end')
+            with open(f'/home/nishanth/Downloads/{f_name}.html', 'w') as f1:
+                f1.write(html)
+            f1.close()
+            status_label.configure(text='Saved..!',text_color='green')
 
 
 def txt_save():
     f_name = file_name.get()
-    if f_name.replace(' ','') == '':
-        status_label.configure(text='Set file name..!', text_color='red')        
+
+    if(sys.platform == 'win32'):
+        if f_name.replace(' ','') == '':
+            status_label.configure(text='Set file name..!', text_color='red')        
+        else:
+            html = html_output_box.get(0.0,'end')
+            with open(f'downloads\\{f_name}.txt', 'w') as f1:
+                f1.write(html)
+            f1.close()
+            status_label.configure(text='Saved..!',text_color='green')
+    
     else:
-        html = html_output_box.get(0.0,'end')
-        with open(f'/home/nishanth/Downloads/{f_name}.txt', 'w') as f1:
-            f1.write(html)
-        f1.close()
-        status_label.configure(text='Saved..!',text_color='green')
+        if f_name.replace(' ','') == '':
+            status_label.configure(text='Set file name..!', text_color='red')        
+        else:
+            html = html_output_box.get(0.0,'end')
+            with open(f'/home/nishanth/Downloads/{f_name}.txt', 'w') as f1:
+                f1.write(html)
+            f1.close()
+            status_label.configure(text='Saved..!',text_color='green')
 
 
 
@@ -83,7 +109,6 @@ status_label = ctk.CTkLabel(master=frame_3, width=100, text='', text_color='gree
 status_label.pack(pady=10, padx=10)
 
 frame_3.pack(pady=10)
-
 
 
 
