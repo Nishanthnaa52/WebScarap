@@ -1,6 +1,7 @@
 from tkinter import *
 import customtkinter as ctk 
 import requests
+from bs4 import BeautifulSoup
 import sys
 
 app = ctk.CTk()
@@ -11,9 +12,18 @@ app.geometry('1200x800')
 #function section.
 def url():
     url = url_input_box.get()
-    html_code = requests.get(url)
-    html_output_box.insert('end',html_code.text)
+    code = requests.get(url)
+    html_code = BeautifulSoup(code.text, 'html.parser')
+    html_output_box.insert('end',html_code)
+    site_status.insert('end',code)
+    site_title.insert('end',html_code.title.string)
 
+
+def clear():
+    html_output_box.delete(0.0,'end')
+    site_status.delete(0.0,'end')
+    site_title.delete(0.0,'end')
+    url_input_box.delete(0,'end')
 
 def html_save():
     f_name = file_name.get()
@@ -69,6 +79,9 @@ frame_1 = ctk.CTkFrame(master=app, width=300, height=300,)
 
 frame_1_left = ctk.CTkFrame(master=frame_1, width=200, height=30,fg_color="transparent")
 
+clear_button = ctk.CTkButton(master=frame_1_left, text='Clear',width=60,command=clear)
+clear_button.pack(side='right')
+
 button_1 = ctk.CTkButton(master=frame_1_left, text='Input URL', width=40, command=url)
 button_1.pack(side='right',padx=10, pady=10)
 
@@ -85,11 +98,24 @@ frame_1_right.pack(side='right', padx=10)
 frame_1.pack(ipady=10, pady=10)
 
 
+
+#title and status section.
+tas = ctk.CTkFrame(master=app, width=1000, height=40)
+
+site_title = ctk.CTkTextbox(master=tas, width=500, height=30,)
+site_title.pack(pady=10, padx=5, side='left')
+
+site_status = ctk.CTkTextbox(master=tas, width=500, height=30,)
+site_status.pack(pady=10, padx=5, side='right')
+
+tas.pack(pady=10)
+
 #html output box section.
 frame_2 = ctk.CTkFrame(master=app, width=300, height=300)
 
-html_output_box = ctk.CTkTextbox(master=frame_2, width=1000, height=500, wrap='none')
-html_output_box.pack()
+
+html_output_box = ctk.CTkTextbox(master=frame_2, width=1000, height=450,)
+html_output_box.pack(fill='both')
 
 frame_2.pack()
 
