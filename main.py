@@ -8,8 +8,6 @@ app.title("Scrap")
 
 app.geometry('1200x800')
 
-
-
 #function section.
 def url():
     url = url_input_box.get()
@@ -65,9 +63,6 @@ def txt_save():
             f1.close()
             status_label.configure(text='Saved..!',text_color='green')
 
-
-
-
 #url input section.
 frame_1 = ctk.CTkFrame(master=app, width=300, height=300)
 
@@ -90,9 +85,6 @@ frame_1_right.pack(side='right', padx=10)
 frame_1.pack(ipady=10, pady=10)
 
 
-
-
-
 #html output box section.
 frame_2 = ctk.CTkFrame(master=app, width=300, height=300)
 
@@ -100,10 +92,6 @@ html_output_box = ctk.CTkTextbox(master=frame_2, width=1000, height=500, wrap='n
 html_output_box.pack()
 
 frame_2.pack()
-
-
-
-
 
 #bottom of the out section.
 frame_3 = ctk.CTkFrame(master=app, width=400, height=100)
@@ -122,7 +110,5 @@ status_label = ctk.CTkLabel(master=frame_3, width=100, text='', text_color='gree
 status_label.pack(pady=10, padx=10)
 
 frame_3.pack(pady=10)
-
-
 
 app.mainloop()
