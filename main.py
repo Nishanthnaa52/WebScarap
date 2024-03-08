@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 import sys
 
 app = ctk.CTk()
-app.title("Scrap")
+app.title("WebScrap")
 
 app.geometry('1200x800')
 
@@ -114,8 +114,8 @@ tas.pack(pady=10)
 frame_2 = ctk.CTkFrame(master=app, width=300, height=300)
 
 
-html_output_box = ctk.CTkTextbox(master=frame_2, width=1000, height=450,)
-html_output_box.pack(fill='both')
+html_output_box = ctk.CTkTextbox(master=frame_2, width=1000, height=450, wrap='none')
+html_output_box.pack()
 
 frame_2.pack()
 
