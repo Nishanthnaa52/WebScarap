@@ -71,14 +71,25 @@ def txt_save():
 #url input section.
 frame_1 = ctk.CTkFrame(master=app, width=300, height=300)
 
-button_1 = ctk.CTkButton(master=frame_1, text='Input URL', width=40, command=url)
-button_1.pack(side='left',padx=10)
+
+frame_1_left = ctk.CTkFrame(master=frame_1, width=200, height=30)
+
+button_1 = ctk.CTkButton(master=frame_1_left, text='Input URL', width=40, command=url)
+button_1.pack(side='right',padx=10, pady=10)
 
 
-url_input_box = ctk.CTkEntry(master=frame_1, placeholder_text='URL',width=400)
+url_input_box = ctk.CTkEntry(master=frame_1_left, placeholder_text='URL',width=400)
 url_input_box.pack(side='left',padx=10)
 
+frame_1_left.pack(padx=10, side='left')
+
+frame_1_right = ctk.CTkFrame(master=frame_1, width=200, height=30)
+
+frame_1_right.pack(side='right', padx=10)
+
 frame_1.pack(ipady=10, pady=10)
+
+
 
 
 
@@ -89,6 +100,8 @@ html_output_box = ctk.CTkTextbox(master=frame_2, width=1000, height=500, wrap='n
 html_output_box.pack()
 
 frame_2.pack()
+
+
 
 
 
