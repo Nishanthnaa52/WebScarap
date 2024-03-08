@@ -64,10 +64,10 @@ def txt_save():
             status_label.configure(text='Saved..!',text_color='green')
 
 #url input section.
-frame_1 = ctk.CTkFrame(master=app, width=300, height=300)
+frame_1 = ctk.CTkFrame(master=app, width=300, height=300,)
 
 
-frame_1_left = ctk.CTkFrame(master=frame_1, width=200, height=30)
+frame_1_left = ctk.CTkFrame(master=frame_1, width=200, height=30,fg_color="transparent")
 
 button_1 = ctk.CTkButton(master=frame_1_left, text='Input URL', width=40, command=url)
 button_1.pack(side='right',padx=10, pady=10)
