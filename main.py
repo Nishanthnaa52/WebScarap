@@ -1,4 +1,4 @@
-from tkinter import *
+#from tkinter import *
 import customtkinter as ctk 
 import requests
 from bs4 import BeautifulSoup
