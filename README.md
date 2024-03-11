@@ -49,9 +49,6 @@ python main.py
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## Acknowledgments
-
-- Thanks to the developers of customtkinter, BeautifulSoup, and requests for their invaluable contributions to this project.
 
 
 
