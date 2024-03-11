@@ -1,0 +1,4 @@
+requests==2.31.0
+customtkinter==5.2.2
+beautifulsoup4==4.10.0
+systemd-python==234
