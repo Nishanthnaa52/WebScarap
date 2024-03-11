@@ -17,34 +17,33 @@ This is a Python-based web scraping application built using customtkinter for th
 - BeautifulSoup (bs4)
 - requests
 
-## Installation
+## Installation & Usage
 1. Clone the repository:
 
 ```bash
-git clone
-```
-2. Install the required dependencies:
-
-```bash
-pip install -r requirements.txt
+git clone https://github.com/Nishanthnaa52/WebScrap.git
 ```
 
-## Usage 
-
-1. Navigate to the project directory:
+2. Navigate to the project directory:
 
 ```bash
 cd WebScrap
 ```
 
-2. Run the application:
+3. Install the required dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+4. Run the application:
 
 ```bash
 python main.py
 ```
-3. Enter the URL of the website you want to scrape and specify the data you wish to extract.
+5. Enter the URL of the website you want to scrape and specify the data you wish to extract.
 
-4. Click on the "Get date" button to initiate the scraping process.
+6. Click on the "Get date" button to initiate the scraping process.
 
 ## License
 
