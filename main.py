@@ -2,7 +2,7 @@
 import customtkinter as ctk 
 import requests
 from bs4 import BeautifulSoup
-import sys
+import sys, os
 
 app = ctk.CTk()
 app.title("WebScrap")
@@ -54,7 +54,8 @@ def html_save():
             status_label.configure(text='Set file name..!', text_color='red')        
         else:
             html = html_output_box.get(0.0,'end')
-            with open(f'downloads\\{f_name}.html', 'w') as f1:
+            user_name = os.getlogin()
+            with open(f'C:\\users\\{user_name}\\downloads\\{f_name}.html', 'w') as f1:
                 f1.write(html)
             f1.close()
             status_label.configure(text='Saved..!',text_color='green')
@@ -79,7 +80,8 @@ def txt_save():
             status_label.configure(text='Set file name..!', text_color='red')        
         else:
             html = html_output_box.get(0.0,'end')
-            with open(f'downloads\\{f_name}.txt', 'w') as f1:
+            user_name = os.getlogin()
+            with open(f'C:\\users\\{user_name}\\downloads\\{f_name}.txt', 'w') as f1:
                 f1.write(html)
             f1.close()
             status_label.configure(text='Saved..!',text_color='green')
