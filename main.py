@@ -48,13 +48,13 @@ def clear():
 
 def html_save():
     f_name = file_name.get()
-    
+    user_name = os.getlogin()
+
     if(sys.platform == 'win32'):
         if f_name.replace(' ','') == '':
             status_label.configure(text='Set file name..!', text_color='red')        
         else:
             html = html_output_box.get(0.0,'end')
-            user_name = os.getlogin()
             with open(f'C:\\users\\{user_name}\\downloads\\{f_name}.html', 'w') as f1:
                 f1.write(html)
             f1.close()
@@ -66,7 +66,7 @@ def html_save():
             status_label.configure(text='Set file name..!', text_color='red')        
         else:
             html = html_output_box.get(0.0,'end')
-            with open(f'/home/nishanth/Downloads/{f_name}.html', 'w') as f1:
+            with open(f'/home/{user_name}/Downloads/{f_name}.html', 'w') as f1:
                 f1.write(html)
             f1.close()
             status_label.configure(text='Saved..!',text_color='green')
@@ -74,13 +74,13 @@ def html_save():
 
 def txt_save():
     f_name = file_name.get()
+    user_name = os.getlogin()
 
     if(sys.platform == 'win32'):
         if f_name.replace(' ','') == '':
             status_label.configure(text='Set file name..!', text_color='red')        
         else:
             html = html_output_box.get(0.0,'end')
-            user_name = os.getlogin()
             with open(f'C:\\users\\{user_name}\\downloads\\{f_name}.txt', 'w') as f1:
                 f1.write(html)
             f1.close()
@@ -91,7 +91,7 @@ def txt_save():
             status_label.configure(text='Set file name..!', text_color='red')        
         else:
             html = html_output_box.get(0.0,'end')
-            with open(f'/home/nishanth/Downloads/{f_name}.txt', 'w') as f1:
+            with open(f'/home/{user_name}/Downloads/{f_name}.txt', 'w') as f1:
                 f1.write(html)
             f1.close()
             status_label.configure(text='Saved..!',text_color='green')
