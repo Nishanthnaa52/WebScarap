@@ -1,42 +1,46 @@
-#from tkinter import *
 import customtkinter as ctk 
 import requests
 from bs4 import BeautifulSoup
 import sys, os
 
 app = ctk.CTk()
+
 app.title("WebScrap")
 
 app.geometry('1200x800')
 
+
+
 #function section.
 def url():
-    url = url_input_box.get()
-    code = requests.get(url)
-    
-    html_code = BeautifulSoup(code.text, 'html.parser')
-    site_title.insert('end',f'Title : {html_code.title.string}')
-    site_status.insert('end',f'Status code : {code}')
+    try:
+        url = url_input_box.get()
+        code = requests.get(url)
+        html_code = BeautifulSoup(code.text, 'html.parser')
+        site_title.insert('end',f'Title : {html_code.title.string}')
+        site_status.insert('end',f'Status code : {code}')
 
-    if(tag_input.get() != '' and attri_input.get() != ''):
-        for i in html_code.find_all(f'{tag_input.get()}'):
-            html_output_box.insert('end',f'{i.get(attri_input.get())}\n')
-
-    
-    elif (tag_input.get() != ''):
-        if (check_button.get() == 1):
+        if(tag_input.get() != '' and attri_input.get() != ''):
             for i in html_code.find_all(f'{tag_input.get()}'):
-                html_output_box.insert('end',i.get_text())
-        else:
-           for i in html_code.find_all(f'{tag_input.get()}'):
-               html_output_box.insert('end',f'{i}\n')
+                html_output_box.insert('end',f'{i.get(attri_input.get())}\n')
 
-    else:
-        if(check_button.get() == 1):
-            html_output_box.insert('end',html_code.get_text())
-        else:
-            html_output_box.insert('end',code.text)
+        
+        elif (tag_input.get() != ''):
+            if (check_button.get() == 1):
+                for i in html_code.find_all(f'{tag_input.get()}'):
+                    html_output_box.insert('end',i.get_text())
+            else:
+                for i in html_code.find_all(f'{tag_input.get()}'):
+                    html_output_box.insert('end',f'{i}\n')
 
+        else:
+            if(check_button.get() == 1):
+                html_output_box.insert('end',html_code.get_text())
+            else:
+                html_output_box.insert('end',code.text)
+
+    except :
+        url_input_box.configure(placeholder_text='Enter corret URL (like . https://######.$$$)', placeholder_text_color='red')
 
 def clear():
     html_output_box.delete(0.0,'end')
@@ -55,7 +59,7 @@ def html_save():
             status_label.configure(text='Set file name..!', text_color='red')        
         else:
             html = html_output_box.get(0.0,'end')
-            with open(f'C:\\users\\{user_name}\\downloads\\{f_name}.html', 'w') as f1:
+            with open(f'C:\\users\\{user_name}\\downloads\\{f_name}.html', 'w', encoding="utf-8") as f1:
                 f1.write(html)
             f1.close()
             status_label.configure(text='Saved..!',text_color='green')
@@ -81,7 +85,7 @@ def txt_save():
             status_label.configure(text='Set file name..!', text_color='red')        
         else:
             html = html_output_box.get(0.0,'end')
-            with open(f'C:\\users\\{user_name}\\downloads\\{f_name}.txt', 'w') as f1:
+            with open(f'C:\\users\\{user_name}\\downloads\\{f_name}.txt', 'w', encoding="utf-8") as f1:
                 f1.write(html)
             f1.close()
             status_label.configure(text='Saved..!',text_color='green')
@@ -96,10 +100,13 @@ def txt_save():
             f1.close()
             status_label.configure(text='Saved..!',text_color='green')
 
+
+
+
 #Main fram section.
             
 main_fram  = ctk.CTkScrollableFrame(master=app,width=1000, height=800, orientation = 'vertical')
-main_fram.pack(ipadx=100,pady=5)
+main_fram.pack(ipadx=300,pady=5)
 
 
 #url input section.
